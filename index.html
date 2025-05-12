@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maze and Character Viewer with Minimap (Ammo.js Physics)</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background-color: #333; /* 背景を少し暗めに */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* 見やすいフォントを指定 */
+        }
+        canvas {
+            display: block;
+        }
+        /* 操作方法表示用のスタイル */
+        #controls-info {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            padding: 12px 18px;
+            background-color: rgba(0, 0, 0, 0.65);
+            color: #f0f0f0;
+            border-radius: 8px;
+            font-size: 14px;
+            line-height: 1.7;
+            z-index: 100;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+        }
+        #controls-info p {
+            margin: 5px 0;
+        }
+        #controls-info strong {
+            color: #ffffff;
+            font-weight: 600;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        /* ロード中メッセージ */
+        #loading-message {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            /* スタートメッセージと重ならないように少し上に調整 */
+            transform: translate(-50%, -70%);
+            color: white;
+            font-size: 20px;
+            padding: 20px;
+            background-color: rgba(0,0,0,0.7);
+            border-radius: 10px;
+            /* スタートメッセージより手前に表示 */
+            z-index: 1001;
+        }
+
+        /* ★★★ ゲーム開始メッセージ用のスタイルを追加 ★★★ */
+        #start-game-message {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 20px 40px;
+            background-color: rgba(0, 0, 0, 0.75); /* 少し濃いめの背景 */
+            color: white;
+            font-size: 24px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: center;
+            border-radius: 10px;
+            z-index: 1000; /* ローディングメッセージよりは奥、操作方法より手前 */
+            cursor: default; /* または pointer */
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5); /* 少し目立つ影 */
+        }
+        #start-game-message p {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="controls-info">
+        <p><strong>操作方法</strong></p>
+        <p>W/A/S/D または ↑/←/↓/→ : 移動</p>
+        <p>スペースキー : キック</p>
+    </div>
+
+    <div id="loading-message">読み込み中...ちょっと待ってね。画面が変わらないときは「Ctrl + Shift + R」でリロードして下さい</div>
+
+    <!-- ★★★ ゲーム開始メッセージ用の要素を追加 ★★★ -->
+    <div id="start-game-message" style="display: none;">
+        <p>Enterキーでゲーム開始</p>
+        <!-- 例: 他のメッセージや操作説明も追加可能 -->
+        <!-- <p style="font-size: 16px; margin-top: 15px;">(音が出ます)</p> -->
+    </div>
+
+    <!-- Three.jsのcanvasはJavaScriptによってここに追加される想定 -->
+
+    <script src="libs/ammo.wasm.js"></script>
+
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://unpkg.com/three@0.164.1/build/three.module.js",
+                "three/addons/": "https://unpkg.com/three@0.164.1/examples/jsm/"
+            }
+        }
+    </script>
+    <!-- Game.js の代わりに main.js を使っているようなので、それに合わせます -->
+    <script type="module" src="main.js"></script>
+</body>
+</html>
