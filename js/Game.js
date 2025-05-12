@@ -62,12 +62,12 @@ class Game {
         this.audioListener = new THREE.AudioListener();
         this.audioLoader = new THREE.AudioLoader();
         this.bgmSound = null;
-        this.bgmPath = '../audio/mikumiku.mp3';
+        this.bgmPath = './audio/mikumiku.mp3';
         this.bgmVolume = 0.3;
         this.bgmLoaded = false;
         this.bgmPlayInitiated = false; // BGMが再生開始されたかのフラグ (初回のみ再生用)
         this.sfxBeamSound = null;
-        this.sfxBeamPath = '../audio/beam_01.mp3';
+        this.sfxBeamPath = './audio/beam_01.mp3';
         this.sfxBeamVolume = 0.6;
         this.sfxBeamLoaded = false;
     }
